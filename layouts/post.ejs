@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %> - <%= siteName %></title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2610599_arob4wtfsdm.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js"></script>
+    <style type="text/css" data-typed-js-css="true">
+        .typed-cursor{
+          opacity: 1;
+        }
+
+        .typed-cursor.typed-cursor--blink{
+            animation: typedjsBlink 0.6s infinite;
+            -webkit-animation: typedjsBlink 0.6s infinite;
+            animation: typedjsBlink 0.6s infinite;
+        }
+
+        @keyframes typedjsBlink{
+          50% { opacity: 0.0; }
+        }
+
+        @-webkit-keyframes typedjsBlink{
+          0% { opacity: 1; }
+          50% { opacity: 0.0; }
+          100% { opacity: 1; }
+        }
+    </style>
+    <script>
+        function typed(){
+            var text = "<%= title %>";
+            var typed = new window.Typed('#subtitle', {
+                strings: [
+                    '  ',
+                    text + '&nbsp;'
+                ],
+                cursorChar: '_',
+                typeSpeed : 50,
+                loop      : false
+            });
+            typed.stop();
+            var subtitle = document.getElementById('subtitle');
+            if (subtitle) {
+                subtitle.innerText = '';
+            }
+            jQuery(document).ready(function() {
+                jQuery('.typed-cursor').addClass('subtitle');
+                typed.start();
+            });
+        };
+    </script>
+</head>
+<body onload="typed();">
+<div class="fullscreen-bg">
+    <video loop muted autoplay class="fullscreen-bg-video">
+        <source src="/background.webm" type="video/webm">
+    </video>
+    <header style="height: 50vh;">
+        <nav>
+            <div class="container header-container">
+                <a class="nav-brand" href="/"><%= siteName %></a>
+                <div class="nav-collapse">
+                    <ul class="nav-bar text-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="iconfont icon-home-fill"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">
+                                <i class="iconfont icon-user-fill"></i>
+                                About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">
+                                <i class="iconfont icon-bug"></i>
+                                Management
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="background post-background text-center">
+            <span class="subtitle" id="subtitle"></span>
+            <div class="post-header">
+                <i class="iconfont icon-date"></i>
+                <%= date %>
+            </div>
+            <% if (category) { %>
+            <span class="post-header">
+                <i class="iconfont icon-category"></i>
+                <%= category %>
+            </span>
+            <% } %>
+            <% if (tags) { %>
+            <span class="post-header">
+            <% tags.forEach(function(tag) { %>
+                <i class="iconfont icon-tags"></i>
+                <%= tag %>
+            </span>
+            <% });} %>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="index-card post-card">
+                <article class="post">
+                    <%- content %>
+                </article>
+            </div>
+    </main>
+</div>
+<footer>
+    <div class="footer-content text-center">
+        Powered by
+        <a href="<%= url %>" target="_blank">
+            <span><%= name %></span>
+        </a>
+        . Made with
+        <i class="iconfont icon-love"></i>
+        .
+    </div>
+</footer>
+</body>
+</html>

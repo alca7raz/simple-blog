@@ -1,0 +1,19 @@
+{
+  "server": {
+    "port": 3000
+  },
+
+  "storage": {
+    "appId": "rYmBeDJdecVlnd7r5mRHkntA-MdYXbMMI",
+    "appKey": "kbF7Mkecdrhb6kC1JbXxRHHW"
+  },
+
+  "website": {
+    "siteName": "myTestWeb",
+    "name": "sxh",
+    "url": "http://localhost:8000"
+  },
+
+  "privateKey": "eqscUIR1ovYiwtuHafjRezhmNaparlqpdBNeUqEHVJbYrDhTObygmqyyYHuj9lah"
+
+}
